@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taskbeheer — Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="notification-container"></div>
+
+  <header>
+    <div id="header-inner">
+      <div id="logo-area">
+        <span id="logo-mark">&#9670;</span>
+        <h1>Taskbeheer</h1>
+      </div>
+      <div id="header-controls">
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <span id="theme-icon">&#9790;</span>
+          <span id="theme-label">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <aside id="sidebar">
+      <section id="add-task-panel">
+        <h2>New Task</h2>
+        <div id="task-form">
+          <div class="field-group">
+            <label for="task-title">Title <span class="required">*</span></label>
+            <input type="text" id="task-title" placeholder="Enter task title..." maxlength="80" />
+            <span class="field-error" id="title-error"></span>
+          </div>
+          <div class="field-group">
+            <label for="task-desc">Description</label>
+            <textarea id="task-desc" placeholder="Describe the task..." rows="3" maxlength="300"></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="task-category">Category</label>
+              <select id="task-category">
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Urgent">Urgent</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+          <div id="form-actions">
+            <button id="save-btn" class="btn-primary">
+              <span id="save-btn-text">Add Task</span>
+            </button>
+            <button id="cancel-edit-btn" class="btn-secondary hidden">Cancel</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="filter-panel">
+        <h2>Filter &amp; Sort</h2>
+        <div class="field-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search title or description..." />
+        </div>
+        <div class="field-group">
+          <label for="filter-category">Category</label>
+          <select id="filter-category">
+            <option value="all">All Categories</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="sort-priority">Sort by Priority</label>
+          <select id="sort-priority">
+            <option value="none">Default</option>
+            <option value="asc">Low → High</option>
+            <option value="desc">High → Low</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="filter-status">Status</label>
+          <select id="filter-status">
+            <option value="all">All Tasks</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+      </section>
+
+      <section id="stats-panel">
+        <h2>Summary</h2>
+        <ul id="stats-list">
+          <li><span class="stat-label">Total</span><span class="stat-value" id="stat-total">0</span></li>
+          <li><span class="stat-label">Active</span><span class="stat-value" id="stat-active">0</span></li>
+          <li><span class="stat-label">Completed</span><span class="stat-value" id="stat-done">0</span></li>
+          <li><span class="stat-label">High Priority</span><span class="stat-value" id="stat-high">0</span></li>
+        </ul>
+      </section>
+    </aside>
+
+    <section id="task-board">
+      <div id="task-board-header">
+        <h2 id="task-count-label">All Tasks</h2>
+      </div>
+      <div id="task-list"></div>
+      <div id="empty-state" class="hidden">
+        <div id="empty-icon">&#9671;</div>
+        <p>No tasks found.</p>
+        <p id="empty-sub">Add your first task to get started.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
